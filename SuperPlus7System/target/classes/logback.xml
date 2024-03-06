@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %green([%thread]) %-5level %logger{50} - %blue(%msg%n)</pattern>
+            <!--中文乱码时可修改此处或注释掉；设置输出格式UTF-8或GBK 如果不设置，则获取默认格式-->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <logger name="org.springframework" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="cn.com.plus7" level="debug" />
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
