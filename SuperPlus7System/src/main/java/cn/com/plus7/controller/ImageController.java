@@ -16,11 +16,13 @@ import java.io.*;
 public class ImageController {
 
     @Value("${path.image}")
-    static String IMG_PATH;
+    public String IMG_PATH;
 
     @RequestMapping("/{fileName}")
     public void showPicture(@PathVariable("fileName") String fileName,
                             HttpServletResponse response) {
+        System.out.println(IMG_PATH);
+        System.out.println(fileName);
 
         File imgFile = new File(IMG_PATH + fileName );
         if (imgFile.exists()) {
