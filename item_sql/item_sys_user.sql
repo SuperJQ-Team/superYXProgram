@@ -45,7 +45,7 @@ CREATE TABLE `sys_user` (
 
 LOCK TABLES `sys_user` WRITE;
 /*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
-INSERT INTO `sys_user` VALUES (1,'1','1','administrator','1',NULL,NULL,0,'system','2023-12-23 02:44:56',NULL,'2023-12-25 21:56:27'),(2,'555','1','user',NULL,NULL,NULL,0,'system','2023-12-23 07:47:45',NULL,NULL),(3,'Super_YX','666','administrator','Super YX',NULL,NULL,0,'system','2023-12-24 02:30:08',NULL,'2023-12-25 06:25:12');
+INSERT INTO `sys_user` VALUES (1,'Super_SF','111','administrator','Super SF',NULL,NULL,0,'system','2023-12-23 02:44:56',NULL,'2023-12-25 21:56:27'),(2,'Super_YX','666','administrator','Super YX',NULL,NULL,0,'system','2023-12-24 02:30:08',NULL,'2023-12-25 06:25:12'),(3,'Super_JQ','114','administrator','Super JQ',NULL,NULL,0,'system','2023-12-24 02:30:08',NULL,'2023-12-25 07:25:12');
 /*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
