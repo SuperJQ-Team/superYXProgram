@@ -1,6 +1,8 @@
 package cn.com.plus7.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,8 @@ import java.io.*;
 @RequestMapping("/img")
 public class ImageController {
 
-    static String IMG_PATH = "E:\\springmvc-img-data\\img-super-puls7-team\\";
+    @Value("${path.image}")
+    static String IMG_PATH;
 
     @RequestMapping("/{fileName}")
     public void showPicture(@PathVariable("fileName") String fileName,
