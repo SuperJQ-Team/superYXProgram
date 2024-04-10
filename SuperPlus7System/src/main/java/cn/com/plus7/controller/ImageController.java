@@ -21,8 +21,8 @@ public class ImageController {
     @RequestMapping("/{fileName}")
     public void showPicture(@PathVariable("fileName") String fileName,
                             HttpServletResponse response) {
-        System.out.println(IMG_PATH);
-        System.out.println(fileName);
+//        System.out.println(IMG_PATH);
+//        System.out.println(fileName);
 
         File imgFile = new File(IMG_PATH + fileName );
         if (imgFile.exists()) {
