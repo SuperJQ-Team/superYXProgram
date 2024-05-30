@@ -33,10 +33,10 @@ public class LoginController {
     @ResponseBody
     public AjaxResult login(String username, String password) {
         log.info("username:" + username + "login.");
-        if (username == null || "".equals(username)) {
+        if ("".equals(username)) {
             return AjaxResult.error("用户名不能为空");
         }
-        if (password == null || "".equals(password)) {
+        if ("".equals(password)) {
             return AjaxResult.error("密码不能为空");
         }
         SysUser user = loginService.login(username, password);
