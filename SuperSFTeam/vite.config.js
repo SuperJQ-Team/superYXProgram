@@ -54,7 +54,7 @@ export default defineConfig({
             // 这里的ccc可乱写, 是拼接在url后面的地址 如果接口中没有统一的后缀可自定义
             // 如果有统一后缀, 如api, 直接写api即可, 也不用rewrite了
             "^/api": {
-                target: "http://192.168.128.179:8080/", // 真实接口地址, 后端给的基地址
+                target: "http://192.168.43.130:8080/", // 真实接口地址, 后端给的基地址
                 changeOrigin: true, // 允许跨域
                 rewrite: (path) => path.replace(/^\/api/, ""), // 将ccc替换为空
             },

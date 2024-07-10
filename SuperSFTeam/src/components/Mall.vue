@@ -30,29 +30,84 @@ export default {
             Data: [],
             perPage: 10, // 每次加载的项目数量
             currentPage: 1, // 当前页码
+            productList: [],
         }
     },
     mounted() {
         this.currentPage = 1;
         this.loadMoreItems();
         addEventListener('scroll', this.handleScroll);
+        if (this.User === null) {
+            this.$toast.error('未登录', {
+                duration: 2000,
+                maxToasts: 4,
+                position: "top",
+            })
+        } else {
+            this.axios.get("/api/carts/get", {}).then((response) => {
+                let data = response.data;
+                if (data.code === 200) {
+                    this.productList = data.list;
+                } else {
+                    this.$toast.error(data.msg, {
+                        duration: 4000,
+                        maxToasts: false,
+                    })
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
     },
     methods: {
+        isLogin() {
+            if (this.User === null) {
+                this.$toast.error('未登录', {
+                    duration: 2000,
+                    maxToasts: 4,
+                    position: "top",
+                })
+                return false;
+            } else return true;
+        },
         //添加到购物车
         addtoCart(item) {
-            // console.log(item);
-            let ret = Carts.add(item);
-            // if (ret === "AlreadyHave") {
-            //     this.$toast.error('购物车内已有此商品', {
+            // // console.log(item);
+            // let ret = Carts.add(item);
+            // // if (ret === "AlreadyHave") {
+            // //     this.$toast.error('购物车内已有此商品', {
+            // //         duration: 2000,
+            // //         maxToasts: 4,
+            // //     })
+            // // } else
+            // if (ret === true) {
+            //     this.$toast.success('添加成功', {
             //         duration: 2000,
             //         maxToasts: 4,
             //     })
-            // } else
-            if (ret === true) {
-                this.$toast.success('添加成功', {
+            // }
+            if (!this.isLogin()) {
+                this.$toast.error('未登录', {
                     duration: 2000,
                     maxToasts: 4,
-                })
+                    position: "top",
+                });
+            } else {
+                for (let i in this.productList) {
+                    if (this.productList[i].id === item.id) {
+                        this.productList[i].number += item.number;
+                        this.axios.post("/api/carts/set", this.productList).then((response) => {
+                            if (response.data.code !== 200) {
+                                this.$toast.error(data.msg, {
+                                    duration: 2000,
+                                    maxToasts: 4,
+                                })
+                            }
+                        });
+                        return;
+                    }
+                }
+                this.productList.push(item);
             }
         },
         loadMoreItems() {
