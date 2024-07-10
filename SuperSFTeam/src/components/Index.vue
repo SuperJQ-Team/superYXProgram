@@ -40,8 +40,14 @@
         </div>
         <div class="section">
             <div>
+                <h2>团队成员</h2>
+                <img src="../assets/heng.jpg" alt="寄"/>
+            </div>
+        </div>
+        <div class="section">
+            <div>
                 <h2>免责声明</h2>
-                <br><br>
+                <br>
                 <p>本网站所提供的信息，只供参考之用。</p>
                 <p>
                     本网站及其雇员一概毋须以任何方式就任何信息传递或传送的失误、不准确或错误对用户或任何其他人士负任何直接或间接的责任。</p>
@@ -52,9 +58,9 @@
                 <p>
                     本网站图片，文字之类版权申明，因为网站可以由注册用户自行上传图片或文字，本网站无法鉴别所上传图片或文字的知识版权，如果侵犯，请及时通知我们，本网站将在第一时间及时删除。</p>
                 <p>凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。</p>
-                <br>
+                <br><br>
                 <h2>联系我们</h2>
-                <p>联系方式：无</p>
+                <p>联系方式：暂无</p>
             </div>
         </div>
     </full-page>
@@ -186,7 +192,8 @@ export default {
     max-height: 80vh;
     width: 100%;
     max-width: 60vw;
-    object-fit: cover;
+    /*object-fit: cover;*/
+    object-fit: scale-down;
 }
 
 .section div {

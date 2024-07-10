@@ -42,16 +42,18 @@ export default {
         addtoCart(item) {
             // console.log(item);
             let ret = Carts.add(item);
-            if (ret === "AlreadyHave") {
-                this.$toast.error('购物车内已有此商品', {
-                    duration: 2000,
-                    maxToasts: 4,
-                })
-            } else if (ret === true)
+            // if (ret === "AlreadyHave") {
+            //     this.$toast.error('购物车内已有此商品', {
+            //         duration: 2000,
+            //         maxToasts: 4,
+            //     })
+            // } else
+            if (ret === true) {
                 this.$toast.success('添加成功', {
                     duration: 2000,
                     maxToasts: 4,
                 })
+            }
         },
         loadMoreItems() {
             this.axios.get("/api/goods/list", {

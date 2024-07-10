@@ -29,15 +29,19 @@ export default {
                     catalogue: "团队介绍",
                 },
                 {
-                    text: "全能卷王——LSF",
+                    text: "超高校级的卷王——LSF",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "英俊潇洒的前端人员——LJQ",
+                    text: "超高校级的前端人员——LJQ",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "资源管理大师——ZYX",
+                    text: "超高校级的资源管理大师——ZYX",
+                    catalogue: "团队成员",
+                },
+                {
+                    text: "超高校级的技术支持人员——ZHL",
                     catalogue: "团队成员",
                 },
                 {
