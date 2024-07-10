@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello World</h1>
+<form action="/user/login" >
+    登录
+    <label>
+        用户名：
+        <input type="text" name="username">
+    </label>
+    <label>
+        密码：
+        <input type="password" name="password">
+    </label>
+    <input type="submit">
+</form>
+<form action="/user/signup">
+    注册
+    <label>
+        用户名：
+        <input type="text" name="username">
+    </label>
+    <label>
+        密码：
+        <input type="password" name="password">
+    </label>
+    <label>
+        角色：
+        <input type="text" name="role">
+    </label>
+    <input type="submit">
+</form>
+<form action="/user/logout">
+    登出
+    <input type="submit">
+</form>
+<form action="/user/writeoff">
+    注销
+    <label>
+        用户名：
+        <input type="text" name="username">
+    </label>
+    <label>
+        密码：
+        <input type="password" name="password">
+    </label>
+    <input type="submit">
+</form>
+<form action="/goods/list">
+    货物查询
+    <input type="submit">
+</form>
+<form action="/goods/add" method="post">
+    添加货物
+    <label>
+        名称：
+        <input type="text" name="name">
+    </label>
+    <label>
+        简介：
+        <input type="text" name="summary">
+    </label>
+    <label>
+        图片：
+        <input type="text" name="imagePath">
+    </label>
+    <label>
+        价格：
+        <input type="text" name="price">
+    </label>
+    <input type="submit">
+</form>
+<form action="/goods/edit" method="post">
+    更新货物
+    <label>
+        id：
+        <input type="text" name="id">
+    </label>
+    <label>
+        名称：
+        <input type="text" name="name">
+    </label>
+    <label>
+        简介：
+        <input type="text" name="summary">
+    </label>
+    <label>
+        图片：
+        <input type="text" name="imagePath">
+    </label>
+    <label>
+        价格：
+        <input type="text" name="price">
+    </label>
+    <input type="submit">
+</form>
+</body>
+</html>
