@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.etock.java.mapper.OrdersMapper">
+<mapper namespace="com.etoak.java.mapper.OrdersMapper">
   <select id="selectNoDelWithOrder" parameterType="Long" resultType="java.util.Map">
     select distinct  orders.id,orders.count,orders.state,orders.price, goods.name, goods.image_path from goods, orders
     where
