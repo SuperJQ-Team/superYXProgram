@@ -44,10 +44,13 @@ export default {
                 position: "top",
             })
         } else {
-            this.axios.get("/api/carts/get", {}).then((response) => {
+            this.axios.get("/api/carts/get").then((response) => {
                 let data = response.data;
+                // console.log(data);
                 if (data.code === 200) {
-                    this.productList = data.list;
+                    if (data.data)
+                        this.productList = JSON.parse(data.data);
+                    // console.log(this.productList)
                 } else {
                     this.$toast.error(data.msg, {
                         duration: 4000,
@@ -96,6 +99,7 @@ export default {
                 for (let i in this.productList) {
                     if (this.productList[i].id === item.id) {
                         this.productList[i].number += item.number;
+                        // console.log(this.productList)
                         this.axios.post("/api/carts/set", this.productList).then((response) => {
                             if (response.data.code !== 200) {
                                 this.$toast.error(data.msg, {
@@ -108,6 +112,15 @@ export default {
                     }
                 }
                 this.productList.push(item);
+                // console.log(this.productList)
+                this.axios.post("/api/carts/set", this.productList).then((response) => {
+                    if (response.data.code !== 200) {
+                        this.$toast.error(data.msg, {
+                            duration: 2000,
+                            maxToasts: 4,
+                        })
+                    }
+                });
             }
         },
         loadMoreItems() {

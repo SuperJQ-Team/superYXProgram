@@ -152,10 +152,19 @@ export default {
                         itemId: this.productList[i].id,
                         price: this.productList[i].price * this.productList[i].number,
                     })
-                    Carts.remove(this.productList[i].id);
+                    // Carts.remove(this.productList[i].id);
+                    this.productList.splice(i, 1);
                 }
             }
-            this.productList = Carts.get();
+            // this.productList = Carts.get();
+            this.axios.post("/api/carts/set", this.productList).then((response) => {
+                if (response.data.code !== 200) {
+                    this.$toast.error(data.msg, {
+                        duration: 2000,
+                        maxToasts: 4,
+                    })
+                }
+            });
             if (list.length === 0) {
                 this.$toast.error('未选择商品', {
                     duration: 2000,
@@ -193,7 +202,7 @@ export default {
         this.axios.get("/api/carts/get", {}).then((response) => {
             let data = response.data;
             if (data.code === 200) {
-                this.productList = data.list;
+                this.productList = JSON.parse(data.data);
             } else {
                 this.$toast.error(data.msg, {
                     duration: 2000,
