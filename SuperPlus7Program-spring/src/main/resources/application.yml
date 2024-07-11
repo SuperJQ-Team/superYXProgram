@@ -7,6 +7,8 @@ spring:
     username: commander
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+
 
 path:
   image: D:/Git/superSFProgram/springmvc-img-data/img-super-puls7-team/
