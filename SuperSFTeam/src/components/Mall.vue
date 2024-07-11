@@ -113,7 +113,7 @@ export default {
                         return;
                     }
                 }
-                this.productList.push(item);
+                this.productList.push(Object.assign({}, item));
                 // console.log(this.productList)
                 this.axios.post("/api/carts/set", this.productList).then((response) => {
                     if (response.data.code !== 200) {
@@ -133,6 +133,7 @@ export default {
                 }
             }).then((response) => {
                 let data = response.data;
+                // console.log(data);
                 if (data.code === 200) {
                     // console.log(this.currentPage)
                     if (data.data.list.length === 0) {

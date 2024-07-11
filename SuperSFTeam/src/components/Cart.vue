@@ -114,12 +114,25 @@ export default {
     },
     methods: {
         del() {
+            let l_temp = [];
             for (let i in this.productList) {
-                if (this.productList[i].select === true) {
-                    Carts.remove(this.productList[i].id);
+                // if (this.productList[i].select === true) {
+                //     Carts.remove(this.productList[i].id);
+                // }
+                if (!this.productList[i].select) {
+                    l_temp.push(this.productList[i]);
                 }
             }
-            this.productList = Carts.get();
+            this.productList = l_temp;
+            // this.productList = Carts.get();
+            this.axios.post("/api/carts/set", this.productList).then((response) => {
+                if (response.data.code !== 200) {
+                    this.$toast.error(data.msg, {
+                        duration: 2000,
+                        maxToasts: 4,
+                    })
+                }
+            });
         },
         comboMinus(cart) {
             if (cart.number > 1) {
@@ -143,19 +156,21 @@ export default {
                 })
                 return;
             }
-            let list = [];
+            let list_submit = [], l_temp = [];
             for (let i in this.productList) {
                 // console.log(this.productList[i].select)
                 if (this.productList[i].select === true) {
-                    list.push({
+                    list_submit.push({
                         count: this.productList[i].number,
                         itemId: this.productList[i].id,
                         price: this.productList[i].price * this.productList[i].number,
                     })
                     // Carts.remove(this.productList[i].id);
-                    this.productList.splice(i, 1);
+                } else {
+                    l_temp.push(this.productList[i]);
                 }
             }
+            this.productList = l_temp;
             // this.productList = Carts.get();
             this.axios.post("/api/carts/set", this.productList).then((response) => {
                 if (response.data.code !== 200) {
