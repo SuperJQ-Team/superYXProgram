@@ -8,7 +8,10 @@ export class Carts {
 
         for (let i in list) {
             if (list[i].id === obj.id) {
-                return "AlreadyHave";
+                // return "AlreadyHave";
+                list[i].number += obj.number;
+                Cookies.set("carts", list, 15);
+                return true;
             }
         }
 

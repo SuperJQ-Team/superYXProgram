@@ -189,7 +189,20 @@ export default {
         }
     },
     mounted() {
-        this.productList = Carts.get();
+        // this.productList = Carts.get();
+        this.axios.get("/api/carts/get", {}).then((response) => {
+            let data = response.data;
+            if (data.code === 200) {
+                this.productList = data.list;
+            } else {
+                this.$toast.error(data.msg, {
+                    duration: 2000,
+                    maxToasts: 4,
+                })
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
         // console.log(this.productList)
     }
 }
