@@ -38,7 +38,7 @@ public class CartsController {
                     .builder()
                     .data(Objects.requireNonNullElse(item, ""))
                     .code(200)
-                    .msg("查询成功")d
+                    .msg("查询成功")
                     .build();
         }catch (Exception e){
             System.out.println(Arrays.toString(e.getStackTrace()));
