@@ -1,6 +1,7 @@
 package com.etoak.java.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.etoak.java.service.IUserInfoService;
 import com.etoak.java.mapper.SysUserMapper;
 import com.etoak.java.entity.SysUser;
@@ -13,7 +14,9 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class UserInfoScrviceImpl implements IUserInfoService {
+public class UserInfoScrviceImpl
+        extends ServiceImpl<SysUserMapper, SysUser>
+        implements IUserInfoService {
 
     @Autowired
     private SysUserMapper sysUserMapper;

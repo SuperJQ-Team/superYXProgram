@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.etoak.java.mapper.CartsMapper">
-
+    <insert id="setCart" parameterType="com.etoak.java.entity.Carts">
+        INSERT INTO carts(user_id, items)
+        VALUE(#{cart.userId}, #{cart.items})
+        ON DUPLICATE KEY UPDATE items= #{cart.items}
+    </insert>
 </mapper>
