@@ -27,6 +27,7 @@ export default {
     name: "Mall",
     data() {
         return {
+            User: null,
             Data: [],
             perPage: 10, // 每次加载的项目数量
             currentPage: 1, // 当前页码
@@ -34,10 +35,11 @@ export default {
         }
     },
     mounted() {
+        this.User = JSON.parse(sessionStorage.getItem('user'));
         this.currentPage = 1;
         this.loadMoreItems();
         addEventListener('scroll', this.handleScroll);
-        if (this.User === null) {
+        if (JSON.parse(sessionStorage.getItem('user')) === null) {
             this.$toast.error('未登录', {
                 duration: 2000,
                 maxToasts: 4,

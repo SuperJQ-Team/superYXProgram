@@ -199,20 +199,28 @@ export default {
     },
     mounted() {
         // this.productList = Carts.get();
-        this.axios.get("/api/carts/get", {}).then((response) => {
-            let data = response.data;
-            if (data.code === 200) {
-                this.productList = JSON.parse(data.data);
-            } else {
-                this.$toast.error(data.msg, {
-                    duration: 2000,
-                    maxToasts: 4,
-                })
-            }
-        }).catch((error) => {
-            console.log(error);
-        })
-        // console.log(this.productList)
+        if (JSON.parse(sessionStorage.getItem('user')) === null) {
+            this.$toast.error('未登录', {
+                duration: 2000,
+                maxToasts: 4,
+                position: "top",
+            })
+        } else {
+            this.axios.get("/api/carts/get", {}).then((response) => {
+                let data = response.data;
+                if (data.code === 200) {
+                    this.productList = JSON.parse(data.data);
+                } else {
+                    this.$toast.error(data.msg, {
+                        duration: 2000,
+                        maxToasts: 4,
+                    })
+                }
+            }).catch((error) => {
+                console.log(error);
+            })
+            // console.log(this.productList)
+        }
     }
 }
 </script>
