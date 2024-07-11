@@ -13,10 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,7 +44,7 @@ public class CartsController {
 
     @PostMapping("/set")
     @ResponseBody
-    public AjaxResult set(HttpServletRequest request, String items){
+    public AjaxResult set(HttpServletRequest request, @RequestBody String items){
         HttpSession session = request.getSession();
         SysUser user = (SysUser) session.getAttribute("user");
         try{
