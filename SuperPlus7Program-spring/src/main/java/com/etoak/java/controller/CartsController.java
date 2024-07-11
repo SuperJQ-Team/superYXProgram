@@ -15,7 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @Slf4j
@@ -32,12 +34,14 @@ public class CartsController {
         SysUser user = (SysUser) session.getAttribute("user");
         try{
             String item = cartsService.get(user.getId());
-            if(item != null) {
-                return AjaxResult.success(item);
-            } else {
-                return AjaxResult.success(null);
-            }
+            return AjaxResult
+                    .builder()
+                    .data(Objects.requireNonNullElse(item, ""))
+                    .code(200)
+                    .msg("查询成功")d
+                    .build();
         }catch (Exception e){
+            System.out.println(Arrays.toString(e.getStackTrace()));
             return AjaxResult.error("查询错误");
         }
     }
@@ -55,6 +59,7 @@ public class CartsController {
                 return AjaxResult.error("更新购物车信息错误");
             }
         }catch (Exception e){
+            System.out.println(Arrays.toString(e.getStackTrace()));
             return AjaxResult.error("更新购物车信息错误");
         }
     }
