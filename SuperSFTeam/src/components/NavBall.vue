@@ -7,7 +7,9 @@
         <div class="cover-radius"></div>
         <ul>
             <li v-for="(item, index) in NavList" :class="GetActiveState(index, PageNumber)" :key="index">
-                <p>{{ item.text }}</p>
+                <p class="nav-title">{{ item.title }}</p>
+                <p :class="{'nav-text':true,'nav-text-hide':GetActiveState(index,PageNumber) !== 'ball-page-active'}">
+                    {{ item.text }}</p>
             </li>
         </ul>
     </div>
@@ -25,27 +27,32 @@ export default {
             PageNumber: 0,
             NavList: [
                 {
+                    title: "团队介绍",
                     text: "_____，_____！",
                     catalogue: "团队介绍",
                 },
                 {
-                    text: "超高校级的卷王——LSF",
+                    title: "超高校级的卷王——LSF",
+                    text: "传奇爆肝王",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "超高校级的前端人员——LJQ",
+                    title: "超高校级的前端人员——LJQ",
+                    text: "没合适的照片就p了一张",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "超高校级的资源管理大师——ZYX",
+                    title: "超高校级的资源管理大师——ZYX",
+                    text: "照片他拍的",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "超高校级的技术支持人员——ZHL",
+                    title: "超高校级的技术支持人员——ZHL",
+                    text: "PPT速通记录保持者",
                     catalogue: "团队成员",
                 },
                 {
-                    text: "宇宙安全声明",
+                    title: "宇宙安全声明",
                     catalogue: "免责声明",
                 },
             ]
@@ -203,8 +210,19 @@ export default {
     /*border-bottom: 3px solid rgba(255, 255, 255, 0.7);*/
 }
 
-.nav-ball ul li p {
+.nav-ball ul li p.nav-title {
     margin-left: 10px;
+}
+
+.nav-ball ul li p.nav-text {
+    margin-left: 10px;
+    font-size: 20px;
+    transition: 0.8s;
+}
+
+.nav-ball ul li p.nav-text.nav-text-hide {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0);
 }
 
 .nav-ball li.ball-page-hide {
