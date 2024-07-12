@@ -180,7 +180,7 @@ export default {
                     })
                 }
             });
-            if (list.length === 0) {
+            if (list_submit.length === 0) {
                 this.$toast.error('未选择商品', {
                     duration: 2000,
                     maxToasts: 4,
@@ -189,7 +189,7 @@ export default {
             }
 
             this.axios
-                .post("/api/order/addlist", list)
+                .post("/api/order/addlist", list_submit)
                 .then((request) => {
                     let data = request.data;
                     if (data.code === 200) {
